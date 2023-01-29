@@ -16,7 +16,6 @@ void loop() {
         usleep(100);
       }
       int brightness = Serial.read();
-      Serial.println(brightness);
       led(brightness);
     }
   }
