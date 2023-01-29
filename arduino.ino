@@ -1,6 +1,3 @@
-const int BUFFER_SIZE = 100;
-char buf[BUFFER_SIZE];
-
 void setup() {
   Serial.begin(9600);
   ledcSetup(0, 5000 ,8);
