@@ -3,9 +3,9 @@ const int MOTOR_V_L[] = {6/*EN1*/,4/*IN1*/,2/*IN2*/};     /*Motor vorne links D6
 const int MOTOR_V_R[] = {5/*EN2*/,0/*IN3*/,1/*IN4*/};     /*Motor vorne rechts D5(PWM)->EN2,D4->IN3,D2->IN4*/
 const int MOTOR_H_L[] = {10/*EN2*/,8/*IN3*/,7/*IN4*/};    /*Motor hinten links D10(PWM)->EN2,D8->IN3,D7->IN4 */
 const int MOTOR_H_R[] = {11/*EN1*/,13/*IN1*/,12/*IN2*/};  /*Motor hinten rechts D11(PWM)->EN1,D13->IN1,D12->IN2*/
-const int WHEEL_SEPARATION_WIDTH = 1;
-const int WHEEL_SEPARATION_LENGTH = 1;
-const int ticksPerMeter = 1;
+const int WHEEL_SEPARATION_WIDTH = 1  /*Distance between the two wheels on the same axis (meters)*/;
+const int WHEEL_SEPARATION_LENGTH = 1 /*Distance between the front and rear axis (meters)*/;
+const int ticksPerMeter = 1;          /*Number of encoder ticks per meter of travel*/
 
 void setup() {
   Serial.begin(9600);
@@ -30,40 +30,37 @@ void led(int brightness) {
 }
 
 void brake(const int motor[]) {
-
     digitalWrite(motor[0],HIGH);
     digitalWrite(motor[1],LOW);
     digitalWrite(motor[2],LOW); 
-  
 }
 
 void set_duty_cycle(const int motor[],int duty_cycle /*in Prozent*/) {
 
   /*range: -100% bis 100%*/
-  
   if (duty_cycle < 0) {
     duty_cycle = abs(duty_cycle);
     if (duty_cycle > 100) {
-    analogWrite(motor[0],255);
-    digitalWrite(motor[1],LOW);
-    digitalWrite(motor[2],HIGH); 
+      analogWrite(motor[0],255);
+      digitalWrite(motor[1],LOW);
+      digitalWrite(motor[2],HIGH); 
     }else {
-    analogWrite(motor[0],(duty_cycle*2.55));
-    digitalWrite(motor[1],LOW);
-    digitalWrite(motor[2],HIGH);
+      analogWrite(motor[0],(duty_cycle*2.55));
+      digitalWrite(motor[1],LOW);
+      digitalWrite(motor[2],HIGH);
     }
   }else if (duty_cycle > 100) {
-    analogWrite(motor[0],255);
-    digitalWrite(motor[1],HIGH);
-    digitalWrite(motor[2],LOW);
+      analogWrite(motor[0],255);
+      digitalWrite(motor[1],HIGH);
+      digitalWrite(motor[2],LOW);
   }else if (duty_cycle == 0) {
-    analogWrite(motor[0],0);
-    digitalWrite(motor[1],LOW);
-    digitalWrite(motor[2],LOW);
+      analogWrite(motor[0],0);
+      digitalWrite(motor[1],LOW);
+      digitalWrite(motor[2],LOW);
   }else {
-    analogWrite(motor[0],(duty_cycle*2.55));
-    digitalWrite(motor[1],HIGH);
-    digitalWrite(motor[2],LOW);
+      analogWrite(motor[0],(duty_cycle*2.55));
+      digitalWrite(motor[1],HIGH);
+      digitalWrite(motor[2],LOW);
   }
     
 }
