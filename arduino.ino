@@ -1,7 +1,7 @@
 const int LED_PIN = 13;
 const int MOTOR_V_L[] = {6/*EN1*/,4/*IN1*/,2/*IN2*/};     /*Motor vorne links D6(PWM)->EN1,D1->IN1,D0->IN2*/
 const int MOTOR_V_R[] = {5/*EN2*/,A0/*IN3*/,A1/*IN4*/};     /*Motor vorne rechts D5(PWM)->EN2,A0->IN3,A1->IN4*/
-const int MOTOR_H_L[] = {10/*EN2*/,8/*IN3*/,7/*IN4*/};    /*Motor hinten links D10(PWM)->EN2,D8->IN3,D7->IN4 */
+const int MOTOR_H_L[] = {3/*EN2*/,8/*IN3*/,7/*IN4*/};    /*Motor hinten links D3(PWM)->EN2,D8->IN3,D7->IN4 */
 const int MOTOR_H_R[] = {11/*EN1*/,13/*IN1*/,12/*IN2*/};  /*Motor hinten rechts D11(PWM)->EN1,D13->IN1,D12->IN2*/
 const int WHEEL_SEPARATION_WIDTH = 1;  /*Distance between the two wheels on the same axis (meters)*/
 const int WHEEL_SEPARATION_LENGTH = 1; /*Distance between the front and rear axis (meters)*/
